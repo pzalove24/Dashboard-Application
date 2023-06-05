@@ -17,7 +17,6 @@ pipeline {
             steps {
                 sh 'export MONGO_URL=$MONGO_URL'
                 sh 'export PORT=$PORT'
-                sh 'export REACT_APP_BASE_URL=$REACT_APP_BASE_URL'
             }
         }
 
