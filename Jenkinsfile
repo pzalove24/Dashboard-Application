@@ -1,11 +1,10 @@
 pipeline {
     agent any
 
-    // environment {
-    //     MONGO_URL = credentials('mongodb-uri')
-    //     PORT = credentials('port')
-    //     REACT_APP_BASE_URL = credentials('react-app-base-url')
-    // }
+    environment {
+        MONGO_URL = credentials('mongo_url')
+        PORT = credentials('port')
+    }
 
     stages {
         stage('Checkout') {
@@ -13,31 +12,36 @@ pipeline {
                 checkout scm
             }
         }
-        // stage('Server Tests') {
-        //     steps {
-        //         dir('server') {
-        //             sh 'npm install'
-        //             sh 'export MONGO_URL=$MONGO_URL'
-        //             sh 'export PORT=$PORT'
-        //             sh 'export REACT_APP_BASE_URL=$REACT_APP_BASE_URL'
-        //         }
-        //     }
-        // }
+
+        stage('Credential Export') {
+            steps {
+                sh 'export MONGO_URL=$MONGO_URL'
+                sh 'export PORT=$PORT'
+                sh 'export REACT_APP_BASE_URL=$REACT_APP_BASE_URL'
+            }
+        }
+
         // stage('Build Images') {
         //     steps {
-        //         sh 'docker build -t pzalove24/My-Dashboard-Template:client-latest client'
-        //         sh 'docker build -t pzalove24/My-Dashboard-Template:server-latest server'
+        //         sh 'docker build -t pzalove24/Dashboard-Application:client-latest client'
+        //         sh 'docker build -t pzalove24/Dashboard-Application:server-latest server'
+        //         sh 'docker build -t pzalove24/Dashboard-Application:nginx-latest nginx'
         //     }
         // }
         // stage('Push Images to DockerHub') {
         //     steps {
         //         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
         //             sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-        //             sh 'docker push rakeshpotnuru/productivity-app:client-latest'
-        //             sh 'docker push rakeshpotnuru/productivity-app:server-latest'
+        //             sh 'docker push pzalove24/Dashboard-Application:client-latest'
+        //             sh 'docker push pzalove24/Dashboard-Application:server-latest'
+        //             sh 'docker push pzalove24/Dashboard-Application:nginx-latest'
         //         }
         //     }
         // }
+        // stage('Deploy by Docker-Compose') {
+        //     steps {
+        //         sh 'docker-compose -f docker-compose.yml up'
+        //     }
+        // }
     }
-    
 }
