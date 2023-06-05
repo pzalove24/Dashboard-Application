@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     nginx:
-        image: peeratchai24/mern-nginx:latest
+        image: peeratchai24/dashboard-nginx:latest
         restart: always
         depends_on:
             - client
@@ -10,11 +10,11 @@ services:
             - "80:80"
 
     client:
-        image: peeratchai24/mern-client:latest
+        image: peeratchai24/dashboard-client:latest
         environment:
             - CHOKIDAR_USEPOLLING=true
 
     server:
-        image: peeratchai24/mern-server:latest
+        image: peeratchai24/dashboard-server:latest
         env_file:
             - ./server/.env
