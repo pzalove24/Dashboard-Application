@@ -20,13 +20,14 @@ pipeline {
             }
         }
 
-        // stage('Build Images') {
-        //     steps {
-        //         sh 'docker build -t pzalove24/Dashboard-Application:client-latest client'
-        //         sh 'docker build -t pzalove24/Dashboard-Application:server-latest server'
-        //         sh 'docker build -t pzalove24/Dashboard-Application:nginx-latest nginx'
-        //     }
-        // }
+        stage('Build Images') {
+            steps {
+                sh 'docker build -t pzalove24/Dashboard-Application:client-latest client'
+                sh 'docker build -t pzalove24/Dashboard-Application:server-latest server'
+                sh 'docker build -t pzalove24/Dashboard-Application:nginx-latest nginx'
+            }
+        }
+        
         // stage('Push Images to DockerHub') {
         //     steps {
         //         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
