@@ -20,7 +20,14 @@ pipeline {
             }
         }
 
-        stage('Deploy by Docker-Compose') {
+        stage('Integration') {
+            steps {
+                sh 'docker-compose stop'
+                sh 'docker-compose rm -f'
+            }
+        }
+
+        stage('Deployment by Docker-Compose') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up'
             }
