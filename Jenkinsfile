@@ -13,14 +13,6 @@ pipeline {
                 checkout scm
             }
         }
-
-        stage('Client Tests') {
-            steps {
-                dir('client') {
-                    sh 'npm install'
-                }
-            }
-        }
         // stage('Server Tests') {
         //     steps {
         //         dir('server') {
