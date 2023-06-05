@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        MONGO_URL = credentials('mongodb-uri')
-        PORT = credentials('port')
-        REACT_APP_BASE_URL = credentials('react-app-base-url')
-    }
+    // environment {
+    //     MONGO_URL = credentials('mongodb-uri')
+    //     PORT = credentials('port')
+    //     REACT_APP_BASE_URL = credentials('react-app-base-url')
+    // }
 
     stages {
         stage('Checkout') {
