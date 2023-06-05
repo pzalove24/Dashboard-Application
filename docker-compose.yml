@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+    nginx:
+        image: peeratchai24/mern-nginx:latest
+        restart: always
+        depends_on:
+            - client
+            - server
+        ports:
+            - "80:80"
+
+    client:
+        image: peeratchai24/mern-client:latest
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+
+    server:
+        image: peeratchai24/mern-server:latest
+        environment:
+            - PORT=${PORT}
+            - MONGO_URL=${MONGO_URL}

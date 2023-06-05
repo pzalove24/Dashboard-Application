@@ -1,0 +1,2 @@
+https://blog.itsrakesh.co/deploying-a-mern-app-to-aws-elastic-beanstalk-with-cicd
+https://www.freecodecamp.org/news/automate-mern-app-deployment-with-jenkins/
