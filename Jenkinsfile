@@ -20,6 +20,12 @@ pipeline {
             }
         }
 
+        stage('Remove Old Application') {
+            steps {
+                sh 'docker-compose -f docker-compose.yml up'
+            }
+        }
+
         stage('Deploy by Docker-Compose') {
             steps {
                 sh 'docker-compose -f docker-compose.yml up'
